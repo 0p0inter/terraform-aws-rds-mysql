@@ -5,29 +5,29 @@ Sample Terraform module to provision a basic MySQL RDS instance in AWS.
 ## Usage
 ```
 resource  "random_password"  "password" {
-	length  		 = 16
-	special  		 = true
+	length = 16
+	special = true
 	override_special = "!#$%&*()-_=+[]{}<>:?"
 }
 
 resource  "random_string"  "random" {
-	length  	= 10
-	number  	= false
-	special  	= false
+	length = 10
+	number = false
+	special	= false
 }
 
 module  "aws-rds" {
-	source  						  = "github.com/0p0inter/terraform-aws-rds-mysql"
-	database_identifier 			  = "my-sample-app-database"
-	allocated_storage 				  = 10
-	engine_version 					  = "5.7"
-	rds_instance_class 				  = "db.t3.micro"
-	db_name 						  = "sampleappdb"
-	username 						  = "${random_string.random.result}"
-	password 						  = "${random_password.password.result}"
+	source = "github.com/0p0inter/terraform-aws-rds-mysql"
+	database_identifier = "my-sample-app-database"
+	allocated_storage = 10
+	engine_version = "5.7"
+	rds_instance_class = "db.t3.micro"
+	db_name = "sampleappdb"
+	username = "${random_string.random.result}"
+	password = "${random_password.password.result}"
 	rds_instance_parameter_group_name = "default.mysql5.7"
-	vpc_security_group_ids 			  = ["sg-94b3a1f6"]
-	subnet_ids 						  = ["..."]
+	vpc_security_group_ids = ["sg-94b3a1f6"]
+	subnet_ids = ["..."]
 }
 ```
 
