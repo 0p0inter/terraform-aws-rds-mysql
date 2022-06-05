@@ -19,7 +19,7 @@ resource  "random_string"  "random" {
 module  "aws-rds" {
 	#source = "github.com/0p0inter/terraform-aws-rds-mysql"
 	source = "0p0inter/rds-mysql/aws"
-    version = "1.0.0"
+	version = "1.0.0"
 	database_identifier = "my-sample-app-database"
 	allocated_storage = 10
 	engine_version = "5.7"
